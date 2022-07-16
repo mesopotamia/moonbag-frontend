@@ -1,5 +1,6 @@
-// import type { Collection } from './types/collection.type';
-// import type { CollectionSummary } from './types/collection-summary.type';
+import {Collection} from "./backend.type";
+import {CollectionSummary} from "./summary.type";
+
 
 export const getCollection = async(id: string) => {
     const url = `https://collections.palmyra-flair01.workers.dev/api/collections/details/${id}`;
@@ -31,7 +32,7 @@ export async function getCollections(collectionIds: string[]) {
     const collectionData = collections.map(item => item.body.collections).map(transform);
     return collectionData;
 }
-export function transform(collection: any): any {
+export function transform(collection: Collection): CollectionSummary {
     const currentDate = new Date();
     return {
         lastUpdated: currentDate,
