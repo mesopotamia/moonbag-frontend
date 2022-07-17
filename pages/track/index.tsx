@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import Layout from "../../components/layout";
 import CollectionsList from "../../components/collections/collections-list";
 import CollectionItem from "../../components/collections/collection-item";
-
+import Select from 'react-select'
 
 
 export default function Index() {
@@ -18,9 +18,15 @@ export default function Index() {
     }, []);
        console.log('render');
        console.log(collection.slug);
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+    ]
     return (    
         <>
             <Layout>
+                <Select options={options} />
                 <h1>Collection: {collection.slug}</h1>
                 <CollectionItem></CollectionItem>
             </Layout>
