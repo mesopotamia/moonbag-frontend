@@ -45,7 +45,7 @@ export default function Index() {
                     placeholder="Search collection ..."
                     noOptionsMessage={NoOptions}
                     loadingMessage={LoadingOptions}
-                    components={{ DropdownIndicator: null, Option: CustomOption}}
+                    components={{ DropdownIndicator: null, Option: CustomOption, ClearIndicator: null}}
                     instanceId="123"
                     controlShouldRenderValue={false}
                     loadOptions={fetchWithDebounce}
@@ -53,7 +53,7 @@ export default function Index() {
                     defaultValue={[]}
                     isClearable
                     defaultOptions={[]} />
-                <div>
+                <div className="mt-2">
                     {collections.map(collection => (
                         <div key={collection._id} className="bg-white p-5 flex items-center flex-col relative">
                             <button type="button"
