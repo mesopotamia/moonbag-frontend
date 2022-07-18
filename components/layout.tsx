@@ -7,6 +7,7 @@ export default function Layout({children}) {
             <div className="h-screen flex flex-col">
                 <Head>
                     <title>Bayzed</title>
+                    <link rel="manifest" href="/manifest.json" />
                     <meta name="description" content="Track your NFTs across blockchains"/>
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
