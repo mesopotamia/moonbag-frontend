@@ -4,6 +4,7 @@ import AsyncSelect from 'react-select/async';
 import {debounce} from "lodash"
 import type {SearchItem} from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
+import { OptionProps } from 'react-select';
 
 
 export default function Index() {
@@ -22,7 +23,7 @@ export default function Index() {
         }, 300),
         []
     );
-    const CustomOption = (props) => {
+    const CustomOption = (props: OptionProps<SearchItem>) => {
         const { innerProps, innerRef } = props;
         const data: SearchItem = props.data;
         return (
@@ -36,7 +37,10 @@ export default function Index() {
     };
     const NoOptions = () => (<div>No Collections Found</div>)
     const LoadingOptions = () => (<div>Searching for collection</div>)
-    const onChange = (item) => {
+    const onChange = (item: SearchItem) => {
+        if (!item) {
+            return;
+        }
         setCollections(collections => [item, ...collections]);
     }
     return (
