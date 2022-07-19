@@ -45,27 +45,34 @@ export default function Index() {
     }
     const customStyles: StylesConfig<SearchItem, boolean, GroupBase<SearchItem>> = {
         menu: (provided, state) => ({
-          ...provided,
-          color: "var(--secondary-text-color)",
+            ...provided,
+            color: "var(--primary-text-color)",
+            backgroundColor: 'var(--primary-bg-color)'
         }),
         control: (provided) => ({
             ...provided,
-            color: 'var(--secondary-text-color)',
+            color: 'var(--primary-text-color)',
             backgroundColor: 'var(--primary-bg-color)'
         }),
-        placeholder: (provided) => ({
-            ...provided,
-            color: 'var(--secondary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
-        }),
+
         loadingMessage: (provided) => ({
             ...provided,
-            color: 'var(--secondary-text-color)',
+            color: 'var(--primary-text-color)',
             backgroundColor: 'var(--primary-bg-color)'
         }),
         noOptionsMessage: (provided) => ({
             ...provided,
-            color: 'var(--secondary-text-color)',
+            color: 'var(--primary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+        menuList: (provided) => ({
+            ...provided,
+            color: 'var(--primary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: 'var(--primary-text-color)',
             backgroundColor: 'var(--primary-bg-color)'
         }),
     }
@@ -73,7 +80,7 @@ export default function Index() {
         <>
             <Layout>
                 <AsyncSelect
-                    styles={customStyles}
+                    className="react-select-container"
                     placeholder="Search collection ..."
                     noOptionsMessage={NoOptions}
                     loadingMessage={LoadingOptions}

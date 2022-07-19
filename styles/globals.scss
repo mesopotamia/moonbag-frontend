@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*noinspection CssUnresolvedCustomProperty*/
+html {
+    --bayzed-black-text: black;
+    --bayzed-gray-text: rgba(156, 163, 175, var(--tw-text-opacity));
+    --bayzed-white-text: white;
+    --bayzed-white-background: #fff;
+    --bayzed-black-background: #000;
+}
+
+
+.light {
+    --primary-text-color: var(--bayzed-black-text);
+    --secondary-text-color: var(--bayzed-gray-text);
+    --primary-bg-color: var(--bayzed-white-background);
+}
+.dark {
+    --primary-text-color: var(--bayzed-white-text);
+    --secondary-text-color: var(--bayzed-white-text);
+    --primary-bg-color: var(--bayzed-black-background);
+}
+
+.dark .logo img {
+    filter: invert(100%) sepia(0%) saturate(7490%) hue-rotate(158deg) brightness(97%) contrast(100%);
+}
+.light .logo img {
+    filter: invert(0%) sepia(1%) saturate(7450%) hue-rotate(321deg) brightness(108%) contrast(99%);
+}

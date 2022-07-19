@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from '../styles/Home.module.css'
 import Logo from "./logo";
-import { MdNightlight } from "react-icons/md";
+import { MdNightlight, MdWbSunny } from "react-icons/md";
 import { useState } from "react";
 
 export type Lighting = 'light' | 'dark';
@@ -16,6 +16,12 @@ export default function Layout({children}) {
             setLighting('light');
         }
     }
+    const toggleButton = () => {
+        if (lighting === 'light') {
+            return <MdNightlight size="1.5em" color="var(--bayzed-black-text)"/>
+        }
+        return <MdWbSunny size="1.5em" color="var(--bayzed-white-text)"/>
+    }
     return (
         <>
             <div className={`h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
@@ -28,7 +34,9 @@ export default function Layout({children}) {
                 <header className="p-4 border-b-2 border-gray-100">
                     <div className="max-w-5xl m-auto flex justify-between">
                         <Logo />
-                        <button onClick={toggleLighting}><MdNightlight size="1.5em"/></button>
+                        <button onClick={toggleLighting}>
+                            {toggleButton()}
+                        </button>
                     </div>
                 </header>
                 <main className="h-full p-4">
