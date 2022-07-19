@@ -5,7 +5,7 @@ import Logo from "./logo";
 export default function Layout({children}) {
     return (
         <>
-            <div className="h-screen flex flex-col">
+            <div className="h-screen flex flex-col dark bg-primary-bg-color">
                 <Head>
                     <title>Bayzed</title>
                     <link rel="manifest" href="/manifest.json" />
@@ -23,7 +23,7 @@ export default function Layout({children}) {
                 </main>
 
                 <footer className={`${styles.footer} border-t-2 border-gray-100 py-4 px-4`}>
-                    <div className="max-w-5xl m-auto">
+                    <div className="max-w-5xl m-auto text-secondary-text-color">
                         Bayzed.xyz
                     </div>
                     

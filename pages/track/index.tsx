@@ -4,7 +4,7 @@ import AsyncSelect from 'react-select/async';
 import {debounce} from "lodash"
 import type {SearchItem} from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
-import { OptionProps } from 'react-select';
+import { GroupBase, OptionProps, StylesConfig } from 'react-select';
 
 
 export default function Index() {
@@ -43,10 +43,37 @@ export default function Index() {
         }
         setCollections(collections => [item, ...collections]);
     }
+    const customStyles: StylesConfig<SearchItem, boolean, GroupBase<SearchItem>> = {
+        menu: (provided, state) => ({
+          ...provided,
+          color: "var(--secondary-text-color)",
+        }),
+        control: (provided) => ({
+            ...provided,
+            color: 'var(--secondary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: 'var(--secondary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+        loadingMessage: (provided) => ({
+            ...provided,
+            color: 'var(--secondary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+        noOptionsMessage: (provided) => ({
+            ...provided,
+            color: 'var(--secondary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)'
+        }),
+    }
     return (
         <>
             <Layout>
                 <AsyncSelect
+                    styles={customStyles}
                     placeholder="Search collection ..."
                     noOptionsMessage={NoOptions}
                     loadingMessage={LoadingOptions}
