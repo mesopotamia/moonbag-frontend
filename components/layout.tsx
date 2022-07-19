@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from '../styles/Home.module.css'
+import Logo from "./logo";
 
 export default function Layout({children}) {
     return (
@@ -13,7 +14,7 @@ export default function Layout({children}) {
                 </Head>
                 <header className="p-4 border-b-2 border-gray-100">
                     <div className="max-w-5xl m-auto">
-                        BAYZED
+                        <Logo />
                     </div>
                 </header>
                 <main className="h-full p-4">
