@@ -16,13 +16,17 @@ html {
     --primary-text-color: var(--bayzed-black-text);
     --secondary-text-color: var(--bayzed-gray-text);
     --primary-bg-color: var(--bayzed-white-background);
-    --border-color: red
+    --border-color: rgb(239, 243, 244);
+    --box-shadow: rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px;
 }
 .dark {
     --primary-text-color: var(--bayzed-white-text);
     --secondary-text-color: var(--bayzed-white-text);
     --primary-bg-color: var(--bayzed-black-background);
-    --border-color: red;
+    --border-color: rgb(47, 51, 54);
+    --box-shadow: rgb(255 255 255 / 20%) 0px 0px 15px, rgb(255 255 255 / 15%) 0px 0px 3px 1px;
+    color: rgba(229, 231, 235);
+    color: rgba(229, 231, 235);
 }
 
 .dark .logo img {

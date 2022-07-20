@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from '../styles/Home.module.css'
 import Logo from "./logo";
 import { MdNightlight, MdWbSunny } from "react-icons/md";
 import { useState } from "react";
@@ -31,7 +30,7 @@ export default function Layout({children}) {
                     <meta name="description" content="Track your NFTs across blockchains"/>
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
-                <header className="p-4 border-b-2 border-gray-100">
+                <header className="p-4 border-b border-primary-border-color">
                     <div className="max-w-5xl m-auto flex justify-between">
                         <Logo />
                         <button onClick={toggleLighting}>
@@ -44,7 +43,7 @@ export default function Layout({children}) {
                     
                 </main>
 
-                <footer className={`${styles.footer} border-t-2 border-gray-100 py-4 px-4`}>
+                <footer className={`border-t border-primary-border-color py-4 px-4`}>
                     <div className="max-w-5xl m-auto text-secondary-text-color">
                         Bayzed.xyz
                     </div>

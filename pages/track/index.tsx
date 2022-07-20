@@ -44,24 +44,30 @@ export default function Index() {
         setCollections(collections => [item, ...collections]);
     }
     const customStyles: StylesConfig<SearchItem, boolean, GroupBase<SearchItem>> = {
-        container: (provided) => ({
+        control: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
             backgroundColor: 'var(--primary-bg-color)',
             borderColor: 'var(--border-color)'
         }),
-
-        loadingMessage: (provided) => ({
+        input: (provided) => ({
+            ...provided,
+            color: 'var(--primary-text-color)',
+            borderColor: 'var(--border-color)'
+        }),
+        menu: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
             backgroundColor: 'var(--primary-bg-color)',
-            borderColor: 'var(--border-color)'
+            boxShadow: 'var(--box-shadow)'
+        }),
+        loadingMessage: (provided) => ({
+            ...provided,
+            color: 'var(--primary-text-color)',
         }),
         noOptionsMessage: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)',
-            borderColor: 'var(--border-color)'
         }),
         menuList: (provided) => ({
             ...provided,
@@ -71,9 +77,7 @@ export default function Index() {
         }),
         placeholder: (provided) => ({
             ...provided,
-            color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)',
-            borderColor: 'var(--border-color)'
+            color: 'var(--secondary-text-color)',
         }),
         option: (provided) => ({
             ...provided,
@@ -93,6 +97,7 @@ export default function Index() {
                     loadingMessage={LoadingOptions}
                     components={{ DropdownIndicator: null, Option: CustomOption, ClearIndicator: null}}
                     instanceId="123"
+                    // onInputChange={() => {debugger}}
                     controlShouldRenderValue={false}
                     loadOptions={fetchWithDebounce}
                     onChange={onChange}

@@ -9,8 +9,9 @@ module.exports = {
       colors: {
         "primary-text-color": "var(--primary-text-color)",
         "secondary-text-color": "var(--secondary-text-color)",
-        "primary-bg-color": "var(--primary-bg-color)"
-      },
+        "primary-bg-color": "var(--primary-bg-color)",
+        "primary-border-color": "var(--border-color)",
+      }
     },
   },
   plugins: [],
