@@ -16,11 +16,13 @@ html {
     --primary-text-color: var(--bayzed-black-text);
     --secondary-text-color: var(--bayzed-gray-text);
     --primary-bg-color: var(--bayzed-white-background);
+    --border-color: red
 }
 .dark {
     --primary-text-color: var(--bayzed-white-text);
     --secondary-text-color: var(--bayzed-white-text);
     --primary-bg-color: var(--bayzed-black-background);
+    --border-color: red;
 }
 
 .dark .logo img {

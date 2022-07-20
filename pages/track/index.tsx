@@ -44,42 +44,49 @@ export default function Index() {
         setCollections(collections => [item, ...collections]);
     }
     const customStyles: StylesConfig<SearchItem, boolean, GroupBase<SearchItem>> = {
-        menu: (provided, state) => ({
-            ...provided,
-            color: "var(--primary-text-color)",
-            backgroundColor: 'var(--primary-bg-color)'
-        }),
-        control: (provided) => ({
+        container: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
         }),
 
         loadingMessage: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
         }),
         noOptionsMessage: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
         }),
         menuList: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
         }),
         placeholder: (provided) => ({
             ...provided,
             color: 'var(--primary-text-color)',
-            backgroundColor: 'var(--primary-bg-color)'
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
+        }),
+        option: (provided) => ({
+            ...provided,
+            color: 'var(--primary-text-color)',
+            backgroundColor: 'var(--primary-bg-color)',
+            borderColor: 'var(--border-color)'
         }),
     }
     return (
         <>
             <Layout>
                 <AsyncSelect
+                    styles={customStyles}
                     className="react-select-container"
                     placeholder="Search collection ..."
                     noOptionsMessage={NoOptions}

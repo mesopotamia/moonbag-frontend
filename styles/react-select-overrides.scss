@@ -1,6 +1,6 @@
 .react-select-container {
 .react-select__control {
-    background-color: var(--bg-secondary);
+    background-color: var(--primary-bg-color);
     border-color: var(--border-color);
     transition: none;
 
@@ -10,12 +10,12 @@
 }
 
 .react-select__menu {
-    background-color: var(--bg-secondary);
+    background-color: var(--primary-bg-color);
     border: 1px solid var(--border-color);
 }
 
 .react-select__option {
-    background-color: var(--bg-secondary);
+    background-color: var(--primary-bg-color);
 
 &:hover {
      background-color: var(--bg-primary);
