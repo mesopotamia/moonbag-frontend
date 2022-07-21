@@ -23,7 +23,7 @@ export default function Layout({children}) {
     }
     return (
         <>
-            <div className={`min-h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
+            <div className={`h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
                 <Head>
                     <title>Bayzed</title>
                     <link rel="manifest" href="/manifest.json" />
@@ -38,12 +38,12 @@ export default function Layout({children}) {
                         </button>
                     </div>
                 </header>
-                <main className="h-full p-4">
+                <main className="p-4">
                     <div className="max-w-5xl m-auto">{children}</div>
                     
                 </main>
 
-                <footer className={`border-t border-primary-border-color py-4 px-4`}>
+                <footer className={`border-t border-primary-border-color py-4 px-4 mt-auto`}>
                     <div className="max-w-5xl m-auto text-secondary-text-color">
                         Bayzed.xyz
                     </div>
