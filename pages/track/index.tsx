@@ -14,17 +14,17 @@ export default function Index() {
         setCollections(_ => [...list]);
         return removedItem[0];
     }
-    const onSearchResultSelection = async (item: SearchItem) => {
-        await setCollections(collections => [item, ...collections]);
-        // load details
-        const id = item.slug;
-        const url = `https://collections.palmyra-flair01.workers.dev/api/collections/details/${id}`;
+    const getCollectionDetails = async(slug: string) => {
+        const url = `https://collections.palmyra-flair01.workers.dev/api/collections/details/${slug}`;
         const response = await fetch(url);
         const jsonResponse = await response.json();
         const detailedCollection: CollectionDetails = jsonResponse.data;
+        return detailedCollection;
+    }
+    const onSearchResultSelection = async (item: SearchItem) => {
+        await setCollections(collections => [item, ...collections]);
+        const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
-        console.log(detailedCollection.stats.floor_price);
-
     }
     useEffect(() => {
         if (!detailedCollection) {
