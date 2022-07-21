@@ -10,7 +10,7 @@ export default function CollectionItem({ collection }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>*/}
-            <div className="mb-2 flex items-center">
+            <div className="mb-2 flex items-center text-primary-text-color">
                 <img height="30" width="30" src={collection.image_url} alt="" />
                 <span className="ml-2">{collection.name}</span>
             </div>
