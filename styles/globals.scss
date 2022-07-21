@@ -5,8 +5,9 @@
 /*noinspection CssUnresolvedCustomProperty*/
 html {
     --bayzed-black-text: black;
-    --bayzed-gray-text: rgba(156, 163, 175, var(--tw-text-opacity));
+    --bayzed-gray-text: rgba(156, 163, 175);
     --bayzed-white-text: white;
+    --bayzed-gray2-text: rgb(113, 118, 123);
     --bayzed-white-background: #fff;
     --bayzed-black-background: #000;
 }
@@ -21,7 +22,7 @@ html {
 }
 .dark {
     --primary-text-color: var(--bayzed-white-text);
-    --secondary-text-color: var(--bayzed-white-text);
+    --secondary-text-color: var(--bayzed-gray2-text);
     --primary-bg-color: var(--bayzed-black-background);
     --border-color: rgb(47, 51, 54);
     --box-shadow: rgb(255 255 255 / 20%) 0px 0px 15px, rgb(255 255 255 / 15%) 0px 0px 3px 1px;
