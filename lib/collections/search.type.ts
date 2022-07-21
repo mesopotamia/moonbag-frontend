@@ -6,4 +6,5 @@ export interface SearchItem {
     slug: string;
     volume: number;
     _id: string;
+    floor_price?: number;
 }

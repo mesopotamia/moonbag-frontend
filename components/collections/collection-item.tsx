@@ -15,10 +15,10 @@ export default function CollectionItem({ collection }) {
                 <span className="ml-2">{collection.name}</span>
             </div>
             <div className="text-primary-text-color flex flex-col mb-2">
-                3
+                {collection.floor_price}
             </div>
             <div className="text-primary-text-color flex flex-col mb-2">
-                5
+                1
             </div>
         </div>
     )

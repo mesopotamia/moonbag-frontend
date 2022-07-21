@@ -1,4 +1,4 @@
-import {Collection} from "./backend.type";
+import {CollectionDetails} from "./backend.type";
 import {CollectionSummary} from "./summary.type";
 
 
@@ -32,7 +32,7 @@ export async function getCollections(collectionIds: string[]) {
     const collectionData = collections.map(item => item.body.collections).map(transform);
     return collectionData;
 }
-export function transform(collection: Collection): CollectionSummary {
+export function transform(collection: CollectionDetails): CollectionSummary {
     const currentDate = new Date();
     return {
         lastUpdated: currentDate,

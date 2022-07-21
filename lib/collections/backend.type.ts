@@ -1,22 +1,22 @@
 
-export interface Collection {
-    tags: Tags
-    volumes: Volumes
-    _id: string
-    slug: string
-    __v: number
-    chain: string
-    date_last_retrieved_metadata: string
-    date_last_retrieved_stats: string
-    is_enabled: boolean
-    is_visible: boolean
-    metadata: Metadata
-    mp: string
-    name: string
-    state: string
-    stats: Stats
-    date_last_loading_started: string
-    rarity_detection: RarityDetection
+export interface CollectionDetails {
+    tags?: Tags
+    volumes?: Volumes
+    _id?: string
+    slug?: string
+    __v?: number
+    chain?: string
+    date_last_retrieved_metadata?: string
+    date_last_retrieved_stats?: string
+    is_enabled?: boolean
+    is_visible?: boolean
+    metadata?: Metadata
+    mp?: string
+    name?: string
+    state?: string
+    stats?: Stats
+    date_last_loading_started?: string
+    rarity_detection?: RarityDetection
 }
 
 export interface Tags {
