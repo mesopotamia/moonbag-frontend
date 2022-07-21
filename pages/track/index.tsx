@@ -13,7 +13,7 @@ export default function Index() {
     return (
         <>
             <Layout>
-                <CollectionSearch onSearchResultSelection={(item: SearchItem) => setCollections(collections => [item, ...collections])} />
+                <CollectionSearch onSearchResultSelection={(item: SearchItem) => setCollections(collections => [item, ...collections])      } />
                 <div className="mt-2">
                     {collections.map(collection => (
                         <CollectionItem key={collection._id} collection={collection} />

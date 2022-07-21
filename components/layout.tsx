@@ -23,7 +23,7 @@ export default function Layout({children}) {
     }
     return (
         <>
-            <div className={`h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
+            <div className={`min-h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
                 <Head>
                     <title>Bayzed</title>
                     <link rel="manifest" href="/manifest.json" />
