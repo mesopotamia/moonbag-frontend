@@ -1,10 +1,7 @@
-import {useCallback, useState} from 'react'
+import {useState} from 'react'
 import Layout from "../../components/layout";
-import AsyncSelect from 'react-select/async';
-import {debounce} from "lodash"
 import type {SearchItem} from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
-import { GroupBase, OptionProps, StylesConfig } from 'react-select';
 import CollectionSearch from '../../components/collections/collection-search';
 
 
