@@ -22,7 +22,7 @@ export default function Index() {
         return detailedCollection;
     }
     const onSearchResultSelection = async (item: SearchItem) => {
-        await setCollections(collections => [item, ...collections]);
+        setCollections(collections => [item, ...collections]);
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
