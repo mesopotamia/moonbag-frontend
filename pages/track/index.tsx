@@ -4,7 +4,7 @@ import type {SearchItem} from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
 import {CollectionDetails} from "../../lib/collections/backend.type";
-
+import PullToRefresh from 'react-simple-pull-to-refresh';
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
@@ -47,6 +47,9 @@ export default function Index() {
                     {collections.map(collection => (
                         <CollectionItem key={collection._id} collection={collection} />
                     ))}
+                    <PullToRefresh pullingContent="" onRefresh={() => new Promise(resolve => setTimeout(resolve, 1000))}>
+                        <div style={{height: 500}}>test</div>
+                        </PullToRefresh>
                 </div>
             </Layout>
 
