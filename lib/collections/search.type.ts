@@ -5,6 +5,5 @@ export interface SearchItem {
     score: number;
     slug: string;
     volume: number;
-    _id: string;
     floor_price?: number;
 }

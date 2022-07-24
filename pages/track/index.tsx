@@ -36,45 +36,31 @@ export default function Index() {
         return getMultipleCollectionDetails(collections.map(item => item.slug))
         .then((data) => {
             try {
-                const newItems = data.map(item => JSON.parse(item)).map(item => ({
-                    image_url: item.metadata.image_url,
-                    mp: 'opensea',
-                    score: 0,
-                    volume: 0,
-                    floor_price: item.stats.floor_price,
-                    slug: item.slug,
-                    _id: '',
-                    name: item.name
-                }));
+                console.log(data);
+                const newItems: SearchItem[] = data
+                    .map(item => {
+                        // console.log(item);
+                        return JSON.parse(item)
+                    })
+                    .map(item => item.data)
+                    .map(item => {
+                        // console.log(item)
+                        return {
+                            image_url: item.metadata.image_url,
+                            mp: 'opensea',
+                            score: 0,
+                            volume: 0,
+                            floor_price: item.stats.floor_price,
+                            slug: item.slug,
+                            name: item.name
+                        }
+                    });
+                setCollections(newItems)
             }
             catch(e) {
                 console.log(e);
             }
-            
-            // console.log('new Items',newItems);
         })
-        // if (!newCollections) {
-        //     return;
-        // }
-        // console.log(newCollections);
-        // const searchItems = newCollections
-        // .map(item => JSON.parse(item))
-        // .map(item => ({
-        //     image_url: item.metadata.image_url,
-        //     mp: 'opensea',
-        //     score: 0,
-        //     volume: 0,
-        //     floor_price: item.stats.floor_price,
-        //     slug: item.slug,
-        //     _id: '',
-        //     name: item.name
-        // }))
-        // console.log(searchItems);
-        // return newCollections;
-        // return newCollections.then((data) => {
-        //     console.log('data', data)
-        //     return data;
-        // });
     }
     const onSearchResultSelection = async (item: SearchItem) => {
         setCollections(collections => [item, ...collections]);
@@ -99,10 +85,10 @@ export default function Index() {
                         <div>Price</div>
                         <div>Holdings</div>
                     </div>
-                    <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
+                    <PullToRefresh pullingContent="" onRefresh={onRefresh} >
                         <div style={{height: 400}}>
                             {collections.map(collection => (
-                                <CollectionItem key={collection._id} collection={collection} />
+                                <CollectionItem key={collection.slug} collection={collection} />
                             ))}
                         </div>
                     </PullToRefresh>
