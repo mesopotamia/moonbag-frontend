@@ -4,7 +4,7 @@ import type {SearchItem} from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
 import {CollectionDetails} from "../../lib/collections/backend.type";
-
+import PullToRefresh from 'react-simple-pull-to-refresh';
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
@@ -21,8 +21,48 @@ export default function Index() {
         const detailedCollection: CollectionDetails = jsonResponse.data;
         return detailedCollection;
     }
+    const getMultipleCollectionDetails = async(slugs: string[]) => {
+
+        const url = `https://collections.palmyra-flair01.workers.dev/api/collections/multiple/details/`;
+        return await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({slugs: slugs}),
+        })
+        .then(response => response.json())
+        .then(jsonResposne => jsonResposne.data);
+    }
+    const onRefresh = async () => {
+        return getMultipleCollectionDetails(collections.map(item => item.slug))
+        .then((data) => {
+            try {
+                console.log(data);
+                const newItems: SearchItem[] = data
+                    .map(item => {
+                        // console.log(item);
+                        return JSON.parse(item)
+                    })
+                    .map(item => item.data)
+                    .map(item => {
+                        // console.log(item)
+                        return {
+                            image_url: item.metadata.image_url,
+                            mp: 'opensea',
+                            score: 0,
+                            volume: 0,
+                            floor_price: item.stats.floor_price,
+                            slug: item.slug,
+                            name: item.name
+                        }
+                    });
+                setCollections(newItems)
+            }
+            catch(e) {
+                console.log(e);
+            }
+        })
+    }
     const onSearchResultSelection = async (item: SearchItem) => {
-        await setCollections(collections => [item, ...collections]);
+        setCollections(collections => [item, ...collections]);
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
@@ -44,9 +84,14 @@ export default function Index() {
                         <div>Price</div>
                         <div>Holdings</div>
                     </div>
-                    {collections.map(collection => (
-                        <CollectionItem key={collection._id} collection={collection} />
-                    ))}
+                    <PullToRefresh pullingContent="" onRefresh={onRefresh} >
+                        <div style={{height: 400}}>
+                            {collections.map(collection => (
+                                <CollectionItem key={collection.slug} collection={collection} />
+                            ))}
+                        </div>
+                    </PullToRefresh>
+                        
                 </div>
             </Layout>
 
