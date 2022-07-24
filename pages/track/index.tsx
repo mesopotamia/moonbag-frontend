@@ -24,12 +24,12 @@ export default function Index() {
     const getMultipleCollectionDetails = async(slugs: string[]) => {
 
         const url = `https://collections.palmyra-flair01.workers.dev/api/collections/multiple/details/`;
-        return await fetch(url, {
+        return fetch(url, {
             method: 'POST',
             body: JSON.stringify({slugs: slugs}),
         })
         .then(response => response.json())
-        .then(jsonResposne => jsonResposne.data);
+        .then(jsonResponse => jsonResponse.data);
     }
     const onRefresh = async () => {
         return getMultipleCollectionDetails(collections.map(item => item.slug))
@@ -84,7 +84,7 @@ export default function Index() {
                         <div>Price</div>
                         <div>Holdings</div>
                     </div>
-                    <PullToRefresh pullingContent="" onRefresh={onRefresh} >
+                    <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
                         <div style={{height: 400}}>
                             {collections.map(collection => (
                                 <CollectionItem key={collection.slug} collection={collection} />
