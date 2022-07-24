@@ -5,7 +5,6 @@ import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
 import {CollectionDetails} from "../../lib/collections/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
-import useFetch from "react-fetch-hook";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
