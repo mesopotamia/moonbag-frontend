@@ -56,8 +56,7 @@ export default function Index() {
                             name: item.name
                         }
                     });
-                setCollections(newItems)
-                calculateTotalAmount();
+                setCollections(newItems);
             }
             catch(e) {
                 console.log(e);
@@ -89,18 +88,20 @@ export default function Index() {
         const removedItem = removeCollectionAtIndex(0, collections);
         removedItem.floor_price = detailedCollection.stats.floor_price;
         setCollections(collections => [removedItem, ...collections]);
+    }, [detailedCollection]);
+    useEffect(() => {
         calculateTotalAmount();
-    }, [detailedCollection])
+    }, [collections])
     return (
         <>
             <Layout>
                 <div className="mb-5">
-                    <PortfolioTotal amount={amount}></PortfolioTotal>
+                    <PortfolioTotal amount={amount || 0}></PortfolioTotal>
                 </div>
                 <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
                 <div className="mt-6 h-full">
-                    <div className="grid grid-cols-6 text-secondary-text-color mb-3 gap-2 ">
-                        <div className="col-span-4">Token</div>
+                    <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
+                        <div className="col-span-2">Token</div>
                         <div>Price</div>
                         <div>Holdings</div>
                     </div>
