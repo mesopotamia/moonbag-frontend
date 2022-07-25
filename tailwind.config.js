@@ -11,6 +11,7 @@ module.exports = {
         "secondary-text-color": "var(--secondary-text-color)",
         "primary-bg-color": "var(--primary-bg-color)",
         "primary-border-color": "var(--border-color)",
+        "accent-primary-color": "var(--accent-primary)",
       }
     },
   },
