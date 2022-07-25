@@ -5,10 +5,12 @@ import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
 import {CollectionDetails} from "../../lib/collections/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
+import PortfolioTotal from "../../components/portoflio-total";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
     const [detailedCollection, setDetailedCollection] = useState<CollectionDetails>(null);
+    const [amount, setAmount] = useState(0);
     const removeCollectionAtIndex = (index: number, list: SearchItem[]): SearchItem => {
         const removedItem = list.splice(index, 1);
         setCollections(_ => [...list]);
@@ -55,6 +57,7 @@ export default function Index() {
                         }
                     });
                 setCollections(newItems)
+                calculateTotalAmount();
             }
             catch(e) {
                 console.log(e);
@@ -70,6 +73,15 @@ export default function Index() {
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
+    const calculateTotalAmount = () => {
+        const total = collections.reduce(
+            (result: number, item) => {
+                result += item.floor_price;
+                return result ;
+            }, 0
+        )
+        setAmount(total);
+    }
     useEffect(() => {
         if (!detailedCollection) {
             return;
@@ -77,10 +89,14 @@ export default function Index() {
         const removedItem = removeCollectionAtIndex(0, collections);
         removedItem.floor_price = detailedCollection.stats.floor_price;
         setCollections(collections => [removedItem, ...collections]);
+        calculateTotalAmount();
     }, [detailedCollection])
     return (
         <>
             <Layout>
+                <div className="mb-5">
+                    <PortfolioTotal amount={amount}></PortfolioTotal>
+                </div>
                 <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
                 <div className="mt-6 h-full">
                     <div className="grid grid-cols-6 text-secondary-text-color mb-3 gap-2 ">

@@ -86,7 +86,7 @@ const customStyles: StylesConfig<SearchItem, boolean, GroupBase<SearchItem>> = {
     return (
         <AsyncSelect
                     styles={customStyles}
-                    placeholder="Search for a collection ..."
+                    placeholder="Add a collection ..."
                     noOptionsMessage={NoOptions}
                     loadingMessage={LoadingOptions}
                     components={{ DropdownIndicator: null, Option: CustomOption, ClearIndicator: null}}

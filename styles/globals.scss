@@ -10,6 +10,7 @@ html {
     --bayzed-gray2-text: rgb(113, 118, 123);
     --bayzed-white-background: #fff;
     --bayzed-black-background: #000;
+    --sky-500: #0ea5e9;
 }
 
 
@@ -19,6 +20,7 @@ html {
     --primary-bg-color: var(--bayzed-white-background);
     --border-color: rgb(239, 243, 244);
     --box-shadow: rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px;
+    --accent-primary: #3b82f6;
 }
 .dark {
     --primary-text-color: var(--bayzed-white-text);
@@ -26,6 +28,7 @@ html {
     --primary-bg-color: var(--bayzed-black-background);
     --border-color: rgb(47, 51, 54);
     --box-shadow: rgb(255 255 255 / 20%) 0px 0px 15px, rgb(255 255 255 / 15%) 0px 0px 3px 1px;
+    --accent-primary: #1e40af
 }
 
 .dark .logo img {
