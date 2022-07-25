@@ -85,7 +85,7 @@ export default function Index() {
                         <div>Holdings</div>
                     </div>
                     <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
-                        <div style={{height: 400}}>
+                        <div>
                             {collections.map(collection => (
                                 <CollectionItem key={collection.slug} collection={collection} />
                             ))}
