@@ -38,8 +38,8 @@ export default function Layout({children}) {
                         </button>
                     </div>
                 </header>
-                <main className="p-4 bg-primary-bg-color">
-                    <div className="max-w-5xl m-auto">{children}</div>
+                <main className="p-4 bg-primary-bg-color h-full">
+                    <div className="max-w-5xl m-auto h-full">{children}</div>
                     
                 </main>
 
