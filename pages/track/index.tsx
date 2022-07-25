@@ -79,8 +79,8 @@ export default function Index() {
             <Layout>
                 <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
                 <div className="mt-6 h-full">
-                    <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
-                        <div className="col-span-2">Token</div>
+                    <div className="grid grid-cols-6 text-secondary-text-color mb-3 gap-2 ">
+                        <div className="col-span-4">Token</div>
                         <div>Price</div>
                         <div>Holdings</div>
                     </div>
