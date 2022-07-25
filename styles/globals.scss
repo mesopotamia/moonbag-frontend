@@ -34,3 +34,8 @@ html {
 .light .logo img {
     filter: invert(0%) sepia(1%) saturate(7450%) hue-rotate(321deg) brightness(108%) contrast(99%);
 }
+
+
+.lds-ellipsis div {
+    background: var(--secondary-text-color) !important;
+}

@@ -62,7 +62,11 @@ export default function Index() {
         })
     }
     const onSearchResultSelection = async (item: SearchItem) => {
-        setCollections(collections => [item, ...collections]);
+        const isAlreadyInList = collections.find(collectionItem => item.slug === collectionItem.slug);
+        if (!isAlreadyInList) {
+            setCollections(collections => [item, ...collections]);
+        }
+        
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
