@@ -6,6 +6,8 @@ import CollectionSearch from '../../components/collections/collection-search';
 import { CollectionDetails } from "../../lib/collections/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import PortfolioTotal from "../../components/portoflio-total";
+import CollectionsList from "../../components/collections/collections-list";
+import CollectionsEmpty from "../../components/collections/collections-empty";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
@@ -23,7 +25,7 @@ export default function Index() {
         const detailedCollection: CollectionDetails = jsonResponse.data;
         return detailedCollection;
     }
-    const getMultipleCollectionDetails = async (slugs: string[]) => {
+    const fetchMultipleCollectionDetails = async (slugs: string[]) => {
 
         const url = `https://collections.palmyra-flair01.workers.dev/api/collections/multiple/details/`;
         return fetch(url, {
@@ -34,7 +36,7 @@ export default function Index() {
             .then(jsonResponse => jsonResponse.data);
     }
     const onRefresh = async () => {
-        return getMultipleCollectionDetails(collections.map(item => item.slug))
+        return fetchMultipleCollectionDetails(collections.map(item => item.slug))
             .then((data) => {
                 try {
                     console.log(data);
@@ -92,35 +94,6 @@ export default function Index() {
     useEffect(() => {
         calculateTotalAmount();
     }, [collections]);
-    const NoCollectionsAdded = (
-        <div className="pt-4 text-2xl font-black text-secondary-text-color">NO COLLECTION WAS ADDED</div>
-    )
-    const CollectionsList = (
-            <div className="mt-6">
-                <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
-                    <div className="col-span-2">Collection</div>
-                    <div>Price</div>
-                    <div>Tokens</div>
-                </div>
-                <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
-                    <>
-                        <div>
-                            {collections.map(collection => (
-                                <CollectionItem key={collection.slug} collection={collection} />
-                            ))}
-                        </div>
-                        <div style={{ height: 200 }}></div>
-                    </>
-                </PullToRefresh>
-            </div>
-    )
-    let mainContent;
-
-    if (collections.length > 0) {
-        mainContent = CollectionsList;
-    } else {
-        mainContent = NoCollectionsAdded;
-    }
 return (
     <>
         <Layout>
@@ -128,7 +101,12 @@ return (
                 <PortfolioTotal amount={amount || 0}></PortfolioTotal>
             </div>
             <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
-            {mainContent}
+            {
+                collections.length > 0
+                ? <CollectionsList collections={collections} onRefresh={onRefresh} />
+                : <CollectionsEmpty />
+            }
+
         </Layout>
 
     </>
