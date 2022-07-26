@@ -92,15 +92,15 @@ export default function Index() {
     useEffect(() => {
         calculateTotalAmount();
     }, [collections]);
-    const NoCoinsInPortfolio = (
-        <div>No Coins In Portfolio</div>
+    const NoCollectionsAdded = (
+        <div className="pt-4 text-2xl font-black text-secondary-text-color">NO COLLECTION WAS ADDED</div>
     )
-    const CoinsList = (<>
+    const CollectionsList = (
             <div className="mt-6">
                 <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
-                    <div className="col-span-2">Token</div>
+                    <div className="col-span-2">Collection</div>
                     <div>Price</div>
-                    <div>Holdings</div>
+                    <div>Tokens</div>
                 </div>
                 <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
                     <>
@@ -113,13 +113,13 @@ export default function Index() {
                     </>
                 </PullToRefresh>
             </div>
-        </>)
+    )
     let mainContent;
 
     if (collections.length > 0) {
-        mainContent = CoinsList;
+        mainContent = CollectionsList;
     } else {
-        mainContent = NoCoinsInPortfolio;
+        mainContent = NoCollectionsAdded;
     }
 return (
     <>
