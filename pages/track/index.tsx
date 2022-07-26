@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import Layout from "../../components/layout";
-import type {SearchItem} from "../../lib/collections/search.type";
+import type { SearchItem } from "../../lib/collections/search.type";
 import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
-import {CollectionDetails} from "../../lib/collections/backend.type";
+import { CollectionDetails } from "../../lib/collections/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import PortfolioTotal from "../../components/portoflio-total";
 
@@ -16,59 +16,59 @@ export default function Index() {
         setCollections(_ => [...list]);
         return removedItem[0];
     }
-    const getCollectionDetails = async(slug: string) => {
+    const getCollectionDetails = async (slug: string) => {
         const url = `https://collections.palmyra-flair01.workers.dev/api/collections/details/${slug}`;
         const response = await fetch(url);
         const jsonResponse = await response.json();
         const detailedCollection: CollectionDetails = jsonResponse.data;
         return detailedCollection;
     }
-    const getMultipleCollectionDetails = async(slugs: string[]) => {
+    const getMultipleCollectionDetails = async (slugs: string[]) => {
 
         const url = `https://collections.palmyra-flair01.workers.dev/api/collections/multiple/details/`;
         return fetch(url, {
             method: 'POST',
-            body: JSON.stringify({slugs: slugs}),
+            body: JSON.stringify({ slugs: slugs }),
         })
-        .then(response => response.json())
-        .then(jsonResponse => jsonResponse.data);
+            .then(response => response.json())
+            .then(jsonResponse => jsonResponse.data);
     }
     const onRefresh = async () => {
         return getMultipleCollectionDetails(collections.map(item => item.slug))
-        .then((data) => {
-            try {
-                console.log(data);
-                const newItems: SearchItem[] = data
-                    .map(item => {
-                        // console.log(item);
-                        return JSON.parse(item)
-                    })
-                    .map(item => item.data)
-                    .map(item => {
-                        // console.log(item)
-                        return {
-                            image_url: item.metadata.image_url,
-                            mp: 'opensea',
-                            score: 0,
-                            volume: 0,
-                            floor_price: item.stats.floor_price,
-                            slug: item.slug,
-                            name: item.name
-                        }
-                    });
-                setCollections(newItems);
-            }
-            catch(e) {
-                console.log(e);
-            }
-        })
+            .then((data) => {
+                try {
+                    console.log(data);
+                    const newItems: SearchItem[] = data
+                        .map(item => {
+                            // console.log(item);
+                            return JSON.parse(item)
+                        })
+                        .map(item => item.data)
+                        .map(item => {
+                            // console.log(item)
+                            return {
+                                image_url: item.metadata.image_url,
+                                mp: 'opensea',
+                                score: 0,
+                                volume: 0,
+                                floor_price: item.stats.floor_price,
+                                slug: item.slug,
+                                name: item.name
+                            }
+                        });
+                    setCollections(newItems);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            })
     }
     const onSearchResultSelection = async (item: SearchItem) => {
         const isAlreadyInList = collections.find(collectionItem => item.slug === collectionItem.slug);
         if (!isAlreadyInList) {
             setCollections(collections => [item, ...collections]);
         }
-        
+
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
@@ -76,7 +76,7 @@ export default function Index() {
         const total = collections.reduce(
             (result: number, item) => {
                 result += item.floor_price;
-                return result ;
+                return result;
             }, 0
         )
         setAmount(total);
@@ -91,37 +91,49 @@ export default function Index() {
     }, [detailedCollection]);
     useEffect(() => {
         calculateTotalAmount();
-    }, [collections])
-    return (
-        <>
-            <Layout>
-                <div className="mb-5">
-                    <PortfolioTotal amount={amount || 0}></PortfolioTotal>
-                </div>
-                <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
-                <div className="mt-6 h-full">
-                    <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
-                        <div className="col-span-2">Token</div>
-                        <div>Price</div>
-                        <div>Holdings</div>
-                    </div>
-                    <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
-                        <>
-                            <div>
-                                {collections.map(collection => (
-                                    <CollectionItem key={collection.slug} collection={collection} />
-                                ))}
-                            </div>
-                            <div style={{height: 200}}></div>
-                        </>
-                    </PullToRefresh>
-                        
-                </div>
-            </Layout>
-
-        </>
-            
-            
-
+    }, [collections]);
+    const NoCoinsInPortfolio = (
+        <div>No Coins In Portfolio</div>
     )
+    const CoinsList = (<>
+            <div className="mt-6">
+                <div className="grid grid-cols-4 text-secondary-text-color mb-3 gap-2 ">
+                    <div className="col-span-2">Token</div>
+                    <div>Price</div>
+                    <div>Holdings</div>
+                </div>
+                <PullToRefresh pullingContent="" onRefresh={() => onRefresh()} >
+                    <>
+                        <div>
+                            {collections.map(collection => (
+                                <CollectionItem key={collection.slug} collection={collection} />
+                            ))}
+                        </div>
+                        <div style={{ height: 200 }}></div>
+                    </>
+                </PullToRefresh>
+            </div>
+        </>)
+    let mainContent;
+
+    if (collections.length > 0) {
+        mainContent = CoinsList;
+    } else {
+        mainContent = NoCoinsInPortfolio;
+    }
+return (
+    <>
+        <Layout>
+            <div className="mb-5">
+                <PortfolioTotal amount={amount || 0}></PortfolioTotal>
+            </div>
+            <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
+            {mainContent}
+        </Layout>
+
+    </>
+
+
+
+)
 }
