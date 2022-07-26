@@ -97,7 +97,10 @@ export default function Index() {
 return (
     <>
         <Layout>
-            <div className="mb-5">
+            <div className="mb-5" style={{
+                marginLeft: 'calc(50% - 50vw)',
+                marginRight: 'calc(50% - 50vw)'
+                }}>
                 <PortfolioTotal amount={amount || 0}></PortfolioTotal>
             </div>
             <CollectionSearch onSearchResultSelection={onSearchResultSelection} />
