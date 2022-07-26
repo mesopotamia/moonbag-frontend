@@ -5,14 +5,14 @@ import CollectionItem from "../../components/collections/collection-item";
 import CollectionSearch from '../../components/collections/collection-search';
 import { CollectionDetails } from "../../lib/collections/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
-import PortfolioTotal from "../../components/portoflio-total";
+import PortfolioTotal from "../../components/collections/portoflio-total";
 import CollectionsList from "../../components/collections/collections-list";
 import CollectionsEmpty from "../../components/collections/collections-empty";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
     const [detailedCollection, setDetailedCollection] = useState<CollectionDetails>(null);
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState<number>(0);
     const removeCollectionAtIndex = (index: number, list: SearchItem[]): SearchItem => {
         const removedItem = list.splice(index, 1);
         setCollections(_ => [...list]);
