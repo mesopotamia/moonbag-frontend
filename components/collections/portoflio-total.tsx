@@ -6,7 +6,7 @@ export default function PortfolioTotal({amount}) {
                 <span>
                     <img style={{width: "18px", height: "18px"}} src="/eth-currency.svg" alt="Ethereum Currency Symbol"/>
                 </span>
-                <span className="text-white ml-1 text-xl">{amount}</span>
+                <span className="text-white ml-1 text-xl">{amount.toFixed(4)}</span>
             </div>
         </div>
     )
