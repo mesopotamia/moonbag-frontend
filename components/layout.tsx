@@ -17,15 +17,15 @@ export default function Layout({children}) {
     }
     const toggleButton = () => {
         if (lighting === 'light') {
-            return <MdNightlight size="1.5em" color="var(--bayzed-black-text)"/>
+            return <MdNightlight size="1.5em" color="var(--moonbag-black-text)"/>
         }
-        return <MdWbSunny size="1.5em" color="var(--bayzed-white-text)"/>
+        return <MdWbSunny size="1.5em" color="var(--moonbag-white-text)"/>
     }
     return (
         <>
             <div className={`h-screen flex flex-col ${lighting} bg-primary-bg-color`}>
                 <Head>
-                    <title>Bayzed</title>
+                    <title>Moonbag</title>
                     <link rel="manifest" href="/manifest.json" />
                     <meta name="description" content="Track your NFTs across blockchains"/>
                     <link rel="icon" href="/favicon.ico"/>
@@ -45,7 +45,7 @@ export default function Layout({children}) {
 
                 <footer className={`border-t border-primary-border-color py-4 px-4 mt-auto bg-primary-bg-color`}>
                     <div className="max-w-5xl m-auto text-secondary-text-color">
-                        Bayzed.xyz
+                        Moonbag.xyz
                     </div>
                     
                 </footer>
