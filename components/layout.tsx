@@ -45,7 +45,7 @@ export default function Layout({children}) {
 
                 <footer className={`border-t border-primary-border-color py-4 px-4 mt-auto bg-primary-bg-color`}>
                     <div className="max-w-5xl m-auto text-secondary-text-color">
-                        Moonbag.xyz
+                        © 2022 moonbag.ca
                     </div>
                     
                 </footer>
