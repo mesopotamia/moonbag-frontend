@@ -31,7 +31,13 @@ const CustomOption = (props: OptionProps<SearchItem>) => {
         </div>
     )
 };
-const NoOptions = () => (<div>No Collections Found</div>)
+const NoOptions = ({inputValue}) => {
+    if (inputValue) {
+        return (<div>No Collections Found</div>)
+    }else {
+        return null;
+    }
+}
 const LoadingOptions = () => (<div>Searching for collection</div>)
 const onChange = (item: SearchItem) => {
     if (!item) {
