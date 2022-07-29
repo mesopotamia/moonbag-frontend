@@ -30,7 +30,7 @@ export default function Layout({children}) {
                     <meta name="description" content="Track your NFTs across blockchains"/>
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
-                <header className="px-4 py-2 border-b border-primary-border-color">
+                <header className="px-4 py-2 md:py-4 border-b border-primary-border-color">
                     <div className="max-w-5xl m-auto flex justify-between">
                         <Logo />
                         <button onClick={toggleLighting}>
@@ -38,7 +38,7 @@ export default function Layout({children}) {
                         </button>
                     </div>
                 </header>
-                <main className="px-4 py-2 bg-primary-bg-color">
+                <main className="px-4 py-2 md:py-4 bg-primary-bg-color">
                     <div className="max-w-5xl m-auto">{children}</div>
                     
                 </main>
