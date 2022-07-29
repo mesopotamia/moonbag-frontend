@@ -104,7 +104,7 @@ return (
             {
                 collections.length > 0
                 ? <CollectionsList collections={collections} onRefresh={onRefresh} />
-                : <CollectionsEmpty />
+                : <></>
             }
 
         </Layout>
