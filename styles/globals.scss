@@ -4,28 +4,28 @@
 
 /*noinspection CssUnresolvedCustomProperty*/
 html {
-    --bayzed-black-text: black;
-    --bayzed-gray-text: rgba(156, 163, 175);
-    --bayzed-white-text: white;
-    --bayzed-gray2-text: rgb(113, 118, 123);
-    --bayzed-white-background: #fff;
-    --bayzed-black-background: #000;
+    --moonbag-black-text: black;
+    --moonbag-gray-text: rgba(156, 163, 175);
+    --moonbag-white-text: white;
+    --moonbag-gray2-text: rgb(113, 118, 123);
+    --moonbag-white-background: #fff;
+    --moonbag-black-background: #000;
     --sky-500: #0ea5e9;
 }
 
 
 .light {
-    --primary-text-color: var(--bayzed-black-text);
-    --secondary-text-color: var(--bayzed-gray-text);
-    --primary-bg-color: var(--bayzed-white-background);
+    --primary-text-color: var(--moonbag-black-text);
+    --secondary-text-color: var(--moonbag-gray-text);
+    --primary-bg-color: var(--moonbag-white-background);
     --border-color: rgb(239, 243, 244);
     --box-shadow: rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px;
     --accent-primary: #3b82f6;
 }
 .dark {
-    --primary-text-color: var(--bayzed-white-text);
-    --secondary-text-color: var(--bayzed-gray2-text);
-    --primary-bg-color: var(--bayzed-black-background);
+    --primary-text-color: var(--moonbag-white-text);
+    --secondary-text-color: var(--moonbag-gray2-text);
+    --primary-bg-color: var(--moonbag-black-background);
     --border-color: rgb(47, 51, 54);
     --box-shadow: rgb(255 255 255 / 20%) 0px 0px 15px, rgb(255 255 255 / 15%) 0px 0px 3px 1px;
     --accent-primary: #1e40af

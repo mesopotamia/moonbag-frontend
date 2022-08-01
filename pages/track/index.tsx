@@ -67,10 +67,10 @@ export default function Index() {
     }
     const onSearchResultSelection = async (item: SearchItem) => {
         const isAlreadyInList = collections.find(collectionItem => item.slug === collectionItem.slug);
-        if (!isAlreadyInList) {
-            setCollections(collections => [item, ...collections]);
+        if (isAlreadyInList) {
+            return;
         }
-
+        setCollections(collections => [item, ...collections]);
         const detailedCollection = await getCollectionDetails(item.slug);
         setDetailedCollection(detailedCollection);
     }
@@ -104,7 +104,7 @@ return (
             {
                 collections.length > 0
                 ? <CollectionsList collections={collections} onRefresh={onRefresh} />
-                : <CollectionsEmpty />
+                : <></>
             }
 
         </Layout>
