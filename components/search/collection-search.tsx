@@ -1,4 +1,4 @@
-import type { SearchItem } from "../../lib/collections/search.type";
+import type { SearchItem } from "./types/search.type";
 import {useCallback} from 'react';
 import {debounce} from 'lodash'
 import { GroupBase, OptionProps, StylesConfig } from 'react-select';

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import Layout from "../../components/layout";
-import type { SearchItem } from "../../lib/collections/search.type";
+import type { SearchItem } from "../../components/search/types/search.type";
 import CollectionItem from "../../components/collections/collection-item";
-import CollectionSearch from '../../components/collections/collection-search';
-import { CollectionDetails } from "../../lib/collections/backend.type";
+import CollectionSearch from '../../components/search/collection-search';
+import { CollectionDetails } from "../../components/collections/types/backend.type";
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import PortfolioTotal from "../../components/collections/portoflio-total";
 import CollectionsList from "../../components/collections/collections-list";
-import CollectionsEmpty from "../../components/collections/collections-empty";
+import CollectionsEmpty from "../../components/search/collections-empty";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
