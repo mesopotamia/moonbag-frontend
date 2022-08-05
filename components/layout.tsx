@@ -2,8 +2,8 @@ import Head from "next/head";
 import Logo from "./logo";
 import { MdNightlight, MdWbSunny } from "react-icons/md";
 import { useState } from "react";
+import DarkModeToggle, {Lighting} from "./common/dark-mode-toggle";
 
-export type Lighting = 'light' | 'dark';
 
 export default function Layout({children}) {
     const [lighting, setLighting] = useState<Lighting>('light');
@@ -34,7 +34,7 @@ export default function Layout({children}) {
                     <div className="max-w-5xl m-auto flex justify-between">
                         <Logo />
                         <button onClick={toggleLighting}>
-                            {toggleButton()}
+                            <DarkModeToggle mode={lighting} />
                         </button>
                     </div>
                 </header>
