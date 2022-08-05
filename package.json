@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
