@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
-import Layout from "../../../components/layout";
-import type { SearchItem } from "../../../components/search/types/search.type";
-import CollectionSearch from '../../../components/search/collection-search';
-import { CollectionDetails } from "../../../components/collections/types/backend.type";
-import PortfolioTotal from "../../../components/collections/portoflio-total";
-import CollectionsList from "../../../components/collections/collections-list";
+import Layout from "../../components/layout";
+import type { SearchItem } from "../../components/search/types/search.type";
+import CollectionItem from "../../components/collections/collection-item";
+import CollectionSearch from '../../components/search/collection-search';
+import { CollectionDetails } from "../../components/collections/types/backend.type";
+import PullToRefresh from 'react-simple-pull-to-refresh';
+import PortfolioTotal from "../../components/collections/portoflio-total";
+import CollectionsList from "../../components/collections/collections-list";
+import CollectionsEmpty from "../../components/search/collections-empty";
 
 export default function Index() {
     const [collections, setCollections] = useState<SearchItem[]>([]);
@@ -35,7 +38,7 @@ export default function Index() {
     const onRefresh = async () => {
         return fetchMultipleCollectionDetails(collections.map(item => item.slug))
             .then((data) => {
-
+                try {
                     console.log(data);
                     const newItems: SearchItem[] = data
                         .map(item => {
@@ -56,6 +59,10 @@ export default function Index() {
                             }
                         });
                     setCollections(newItems);
+                }
+                catch (e) {
+                    console.log(e);
+                }
             })
     }
     const onSearchResultSelection = async (item: SearchItem) => {
