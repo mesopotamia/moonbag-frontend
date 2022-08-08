@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    '@storybook/addon-backgrounds',
     {
       name: 'storybook-addon-sass-postcss',
       options: {

@@ -12,6 +12,7 @@
     "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
+    "@storybook/addon-backgrounds": "^6.5.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "jest": "^28.1.3",
