@@ -1,5 +1,5 @@
 import DarkModeToggleComponent from "./dark-mode-toggle";
-import {ComponentStory} from "@storybook/react";
+import {ComponentStory, Meta} from "@storybook/react";
 
 export default {
     component: DarkModeToggleComponent,
@@ -9,7 +9,7 @@ export default {
             control: {type: 'radio'},
         },
     }
-}
+} as Meta
 
 const Template: ComponentStory<typeof DarkModeToggleComponent> = (args) => <DarkModeToggleComponent {...args} />;
 
