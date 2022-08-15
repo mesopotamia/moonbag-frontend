@@ -10,6 +10,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     '@storybook/addon-backgrounds',
+    'storybook-addon-themes',
     {
       name: 'storybook-addon-sass-postcss',
       options: {

@@ -8,7 +8,7 @@ export default {
 const Template = (args) => <PortfolioTotal {...args}/>;
 
 export const TotalWithZero = Template.bind({});
-TotalWithZero.args = {amount: null};
+TotalWithZero.args = {amount: undefined};
 
 export const TotalNegative = Template.bind({});
 TotalNegative.args = {amount: -1};

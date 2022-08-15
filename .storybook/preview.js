@@ -1,23 +1,24 @@
 import '../styles/globals.scss';
 
 export const parameters = {
+  themes: {
+    default: 'light',
+    list: [
+      { name: 'light', class: 'light', color: '#fff' },
+      { name: 'dark', class: 'dark', color: '#000' }
+    ],
+  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-    backgrounds: {
+    themes: {
       default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#fff',
-        },
-        {
-          name: 'dark',
-          value: '#000',
-        },
+      list: [
+        { name: 'light', class: 'light', color: '#fff' },
+        { name: 'dark', class: 'dark', color: '#000' }
       ],
     },
   },

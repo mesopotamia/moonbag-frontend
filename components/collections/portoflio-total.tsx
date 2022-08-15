@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 export default function PortfolioTotal({amount}) {
+    if (!amount || amount < 0) {
+        amount = 0;
+    }
     return (
         <div className="p-5 bg-accent-primary-color">
             <div className="text-white text-sm">Total</div>
