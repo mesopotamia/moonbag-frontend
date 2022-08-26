@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import {TrackPage} from './index.stories';
+import Track from './track';
 
 describe('Track Page', () => {
     it('should render', () => {
-        render(<TrackPage />)
+        render(<Track />)
         screen.getByText(/total/i);
     } )
 })

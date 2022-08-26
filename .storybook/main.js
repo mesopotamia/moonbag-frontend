@@ -11,6 +11,7 @@ module.exports = {
     "@storybook/addon-interactions",
     '@storybook/addon-backgrounds',
     'storybook-addon-themes',
+    'storybook-addon-mock/register',
     {
       name: 'storybook-addon-sass-postcss',
       options: {
