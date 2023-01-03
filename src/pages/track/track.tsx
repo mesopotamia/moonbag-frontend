@@ -7,13 +7,10 @@ import PortfolioTotal from "../../../components/collections/portoflio-total";
 import CollectionsList from "../../../components/collections/collections-list";
 import {useSessionContext, useSupabaseClient, useUser} from '@supabase/auth-helpers-react'
 import {useRouter} from "next/router";
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
 
-export default function Index() {
-    const client = useSupabaseClient();
-    const router = useRouter();
-    const user = useUser();
+export default function Index({user}) {
     console.log(user);
-    // console.log(user);
     // const { isLoading, session, error } = useSessionContext();
     // console.log(user);
     const [collections, setCollections] = useState<SearchItem[]>([]);
@@ -96,14 +93,6 @@ export default function Index() {
     useEffect(() => {
         calculateTotalAmount();
     }, [collections]);
-    useEffect(() => {
-        setTimeout(() => {
-            // console.log(user)
-            if (!user) {
-                // router.push('login');
-            }
-        }, 100)
-    }, [user])
 return (
     <>
         <Layout>
