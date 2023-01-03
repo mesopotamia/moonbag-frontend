@@ -3,9 +3,12 @@ import Logo from "./logo";
 import { MdNightlight, MdWbSunny } from "react-icons/md";
 import { useState } from "react";
 import DarkModeToggle, {Lighting} from "./common/dark-mode-toggle";
+import {useUser} from "@supabase/auth-helpers-react";
+import Link from "next/link";
 
 
 export default function Layout({children}) {
+    const user = useUser();
     const [lighting, setLighting] = useState<Lighting>('light');
     const toggleLighting = () => {
         if (lighting === 'light') {
@@ -33,6 +36,7 @@ export default function Layout({children}) {
                 <header className="p-4 border-b border-primary-border-color">
                     <div className="max-w-5xl m-auto flex justify-between">
                         <Logo />
+                        {user ? <div>{user.email}</div> : <Link href="login">Login</Link>}
                         <button onClick={toggleLighting}>
                             <DarkModeToggle mode={lighting} />
                         </button>

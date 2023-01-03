@@ -13,6 +13,10 @@
   },
   "dependencies": {
     "@storybook/addon-backgrounds": "^6.5.10",
+    "@supabase/auth-helpers-nextjs": "^0.5.2",
+    "@supabase/auth-helpers-react": "^0.3.1",
+    "@supabase/auth-ui-react": "^0.2.6",
+    "@supabase/supabase-js": "^2.2.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "jest": "^28.1.3",
